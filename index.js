@@ -30,7 +30,7 @@ const exerciseSchema = new Schema({
 })
 let exerciseModel = mongoose.model("exercise", exerciseSchema);
 
-app.use(cors({optionsSuccessStatus: 200}))
+app.use(cors())
 app.use(express.static('public'))
 app.use("/", bodyParser.urlencoded({ extended: false }));
 
