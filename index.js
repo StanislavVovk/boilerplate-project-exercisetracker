@@ -31,17 +31,8 @@ app.post('/api/users/:_id/exercises', (req, res) => {
     const duration = Number(req.body.duration)
     const username = (users.find(user => user._id === id))?.username
     if (!username) return res.send({errorMessage: 'No user with this id'})
-    const date = req.body.date.length !== 0 ? new Date(req.body.date).toLocaleDateString('en-US', {
-        weekday: 'short',
-        year: 'numeric',
-        month: 'short',
-        day: 'numeric'
-    }) : `${new Date().toLocaleDateString('en-US', {
-        weekday: 'short',
-        year: 'numeric',
-        month: 'short',
-        day: 'numeric'
-    })}`
+    const date = req.body.date.length !== 0 ? new Date(req.body.date).toDateString(
+    ) : `${new Date().toDateString()}`
 
     const user = userData.find(user => user._id === id)
     user.count++
