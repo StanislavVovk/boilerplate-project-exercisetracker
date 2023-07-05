@@ -46,7 +46,7 @@ app.post('/api/users/:_id/exercises', (req, res) => {
     const user = userData.find(user => user._id === id)
     user.count++
     user.log.push({description, duration, date})
-    res.json({"_id": id, username, date, duration, description})
+    res.send({"_id": id, username, date, duration, description})
 })
 
 app.get('/api/users/:_id/logs', (req, res) => {
@@ -74,7 +74,7 @@ app.get('/api/users/:_id/logs', (req, res) => {
         const newLog = log.slice(0, limit)
         return res.json({...user, count: log.length, log: newLog})
     }
-    res.json({...user, count: log.length, log: log})
+    res.send({...user, count: log.length, log: log})
 
 })
 
