@@ -46,7 +46,7 @@ app.post('/api/users/:_id/exercises', (req, res) => {
     const user = userData.find(user => user._id === id)
     user.count++
     user.log.push({description, duration, date})
-    res.send({id, username, description, duration, date})
+    res.json({"_id": id, username, description, duration, date})
 })
 
 app.get('/api/users/:_id/logs', (req, res) => {
