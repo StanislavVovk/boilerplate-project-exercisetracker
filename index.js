@@ -26,11 +26,14 @@ app.post('/api/users', (req, res) => {
     return res.json(user)
 })
 app.post('/api/users/:_id/exercises', (req, res) => {
-    const id = req.body[":_id"]
+    const id = req.body._id
+    console.log(req.body)
     const description = req.body.description
+
     const duration = Number(req.body.duration)
     const username = (users.find(user => user._id === id))?.username
     if (!username) return res.send({errorMessage: 'No user with this id'})
+
     const date = req.body.date.length !== 0 ? new Date(req.body.date).toDateString(
     ) : `${new Date().toDateString()}`
 
